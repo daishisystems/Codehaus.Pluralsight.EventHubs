@@ -18,6 +18,7 @@ namespace Codehaus.Pluralsight.EventHubs
 
         public void Publish(string myEvent)
         {
+            // Todo: Validate input.
             // 1. Serialize the event
             var serializedEvent = JsonConvert.SerializeObject(myEvent);
 
