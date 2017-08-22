@@ -54,6 +54,8 @@ namespace Codehaus.Pluralsight.EventHubs
         /// <returns>A randomly-generated <see cref="DeviceTelemetry" /> instance.</returns>
         public static DeviceTelemetry GenerateRandom(Random random)
         {
+            if (random == null) throw new ArgumentNullException(nameof(random));
+
             return new DeviceTelemetry
             {
                 IpAddress = GenerateRandomIpAddress(random),
@@ -73,6 +75,8 @@ namespace Codehaus.Pluralsight.EventHubs
         /// <returns>A randomly-generated IP address in <see cref="string" />-format.</returns>
         private static string GenerateRandomIpAddress(Random random)
         {
+            if (random == null) throw new ArgumentNullException(nameof(random));
+
             return $"{random.Next(0, 255)}." +
                    $"{random.Next(0, 255)}." +
                    $"{random.Next(0, 255)}." +
@@ -85,11 +89,13 @@ namespace Codehaus.Pluralsight.EventHubs
         /// </summary>
         /// <param name="random">
         ///     <see cref="random" /> is a <see cref="Random" /> instance
-        ///     that produces the required <see cref="Device" /> instance.
+        ///     that produces the required <see cref="DeviceType" /> instance.
         /// </param>
-        /// <returns>A randomly-generated <see cref="Device" /> instance.</returns>
+        /// <returns>A randomly-generated <see cref="DeviceType" /> instance.</returns>
         private static DeviceType GenerateRandomDevice(Random random)
         {
+            if (random == null) throw new ArgumentNullException(nameof(random));
+
             var values = Enum.GetValues(typeof(DeviceType));
             return (DeviceType) values.GetValue(random.Next(1, values.Length));
         }
