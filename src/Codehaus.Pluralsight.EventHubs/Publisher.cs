@@ -18,7 +18,8 @@ namespace Codehaus.Pluralsight.EventHubs
 
         public void Publish<T>(T myEvent)
         {
-            // Todo: Validate input.
+            if (myEvent == null) throw new ArgumentNullException(nameof(myEvent));
+
             // 1. Serialize the event
             var serializedEvent = JsonConvert.SerializeObject(myEvent);
 
@@ -34,6 +35,8 @@ namespace Codehaus.Pluralsight.EventHubs
 
         public async Task PublishAsync<T>(T myEvent)
         {
+            if (myEvent == null) throw new ArgumentNullException(nameof(myEvent));
+
             // 1. Serialize the event
             var serializedEvent = JsonConvert.SerializeObject(myEvent);
 
