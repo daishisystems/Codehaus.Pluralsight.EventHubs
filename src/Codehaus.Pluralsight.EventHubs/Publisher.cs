@@ -16,7 +16,7 @@ namespace Codehaus.Pluralsight.EventHubs
             _eventHubClient = EventHubClient.CreateFromConnectionString(connectionString);
         }
 
-        public void Publish(string myEvent)
+        public void Publish<T>(T myEvent)
         {
             // Todo: Validate input.
             // 1. Serialize the event
@@ -32,7 +32,7 @@ namespace Codehaus.Pluralsight.EventHubs
             _eventHubClient.Send(eventData);
         }
 
-        public async Task PublishAsync(string myEvent)
+        public async Task PublishAsync<T>(T myEvent)
         {
             // 1. Serialize the event
             var serializedEvent = JsonConvert.SerializeObject(myEvent);
