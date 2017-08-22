@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.ServiceBus.Messaging;
 
 namespace Codehaus.Pluralsight.EventHubs.ConsoleApp
@@ -18,8 +19,11 @@ namespace Codehaus.Pluralsight.EventHubs.ConsoleApp
 
             var publisher = new Publisher();
 
-            publisher.Init("Endpoint=sb://mooney.servicebus.windows.net/;SharedAccessKeyName=Publish;SharedAccessKey=YF3Eu+QUmfuxBXhlWvibaKRPVfgKvGr9eo25FId3nIk=;EntityPath=myeventhub");
-            publisher.Publish("Hello!");
+            publisher.Init(
+                "Endpoint=sb://mooney.servicebus.windows.net/;SharedAccessKeyName=Publish;SharedAccessKey=YF3Eu+QUmfuxBXhlWvibaKRPVfgKvGr9eo25FId3nIk=;EntityPath=myeventhub");
+
+            var strings = new List<string> {"Hello", "World"};
+            publisher.Publish(strings);
 
             var eventProcessorHostName = Guid.NewGuid().ToString();
             var eventProcessorHost = new EventProcessorHost(eventProcessorHostName, eventHubName,
