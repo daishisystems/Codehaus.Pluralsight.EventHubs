@@ -22,8 +22,22 @@ namespace Codehaus.Pluralsight.EventHubs.ConsoleApp
             publisher.Init(
                 "Endpoint=sb://mooney.servicebus.windows.net/;SharedAccessKeyName=Publish;SharedAccessKey=YF3Eu+QUmfuxBXhlWvibaKRPVfgKvGr9eo25FId3nIk=;EntityPath=myeventhub");
 
-            var strings = new List<string> {"Hello", "World"};
-            publisher.Publish(strings);
+            #region Publish DeviceTelemetry
+
+            var deviceTelemetry = new DeviceTelemetry
+            {
+                DeviceType = DeviceType.Phone,
+                IpAddress = "127.0.0.1",
+                IsOn = true,
+                Time = DateTime.Now
+            };
+
+            publisher.Publish(deviceTelemetry);
+
+            #endregion
+
+            //var strings = new List<string> {"Hello", "World"};
+            //publisher.Publish(strings);
 
             var eventProcessorHostName = Guid.NewGuid().ToString();
             var eventProcessorHost = new EventProcessorHost(eventProcessorHostName, eventHubName,

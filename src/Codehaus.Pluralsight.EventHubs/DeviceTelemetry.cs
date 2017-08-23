@@ -16,7 +16,7 @@ namespace Codehaus.Pluralsight.EventHubs
         ///     <see cref="IpAddress" /> is the IPv4 address associated with an up-stream
         ///     HTTP request.
         /// </summary>
-        public string IpAddress { get; private set; }
+        public string IpAddress { get; set; }
 
         /// <summary>
         ///     <see cref="Time" /> is the local time upon which this instance was created.
