@@ -11,6 +11,7 @@ namespace Codehaus.Pluralsight.EventHubs
     public class Consumer : IEventProcessor
     {
         private Stopwatch _checkpointStopWatch;
+        private volatile int _counter;
 
         async Task IEventProcessor.CloseAsync(PartitionContext context, CloseReason reason)
         {
@@ -44,6 +45,7 @@ namespace Codehaus.Pluralsight.EventHubs
                     deviceTelemetry.DeviceType,
                     deviceTelemetry.Time,
                     deviceTelemetry.IsOn ? "On" : "Off");
+                Console.WriteLine($"Downloaded {++_counter} events");
 
                 #endregion
 

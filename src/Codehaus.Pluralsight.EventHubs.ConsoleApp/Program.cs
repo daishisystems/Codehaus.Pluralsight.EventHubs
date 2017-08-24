@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.ServiceBus.Messaging;
 
 namespace Codehaus.Pluralsight.EventHubs.ConsoleApp
@@ -22,17 +21,29 @@ namespace Codehaus.Pluralsight.EventHubs.ConsoleApp
             publisher.Init(
                 "Endpoint=sb://mooney.servicebus.windows.net/;SharedAccessKeyName=Publish;SharedAccessKey=YF3Eu+QUmfuxBXhlWvibaKRPVfgKvGr9eo25FId3nIk=;EntityPath=myeventhub");
 
+            #region Simulate Many
+
+            var random = new Random(Environment.TickCount);
+
+            for (var i = 0; i < 1000; i++)
+            {
+                var deviceTelemetry = DeviceTelemetry.GenerateRandom(random);
+                publisher.Publish(deviceTelemetry);
+            }
+
+            #endregion
+
             #region Publish DeviceTelemetry
 
-            var deviceTelemetry = new DeviceTelemetry
-            {
-                DeviceType = DeviceType.Phone,
-                IpAddress = "127.0.0.1",
-                IsOn = true,
-                Time = DateTime.Now
-            };
+            //var deviceTelemetry = new DeviceTelemetry
+            //{
+            //    DeviceType = DeviceType.Phone,
+            //    IpAddress = "127.0.0.1",
+            //    IsOn = true,
+            //    Time = DateTime.Now
+            //};
 
-            publisher.Publish(deviceTelemetry);
+            //publisher.Publish(deviceTelemetry);
 
             #endregion
 

@@ -60,7 +60,8 @@ namespace Codehaus.Pluralsight.EventHubs
             {
                 IpAddress = GenerateRandomIpAddress(random),
                 DeviceType = GenerateRandomDevice(random),
-                Time = DateTime.UtcNow
+                Time = DateTime.UtcNow,
+                IsOn = random.Next(0, 1).Equals(1)
             };
         }
 
