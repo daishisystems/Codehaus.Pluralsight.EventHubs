@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codehaus.Pluralsight.EventH
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codehaus.Pluralsight.EventHubs.PublisherApp", "Codehaus.Pluralsight.EventHubs.PublisherApp\Codehaus.Pluralsight.EventHubs.PublisherApp.csproj", "{AB67B007-98AF-43BC-B27C-13DF21A9DB5A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codehaus.Pluralsight.EventHubs.ConsumerApp", "Codehaus.Pluralsight.EventHubs.ConsumerApp\Codehaus.Pluralsight.EventHubs.ConsumerApp.csproj", "{422B58C7-F585-413B-BA19-56836882B6DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{AB67B007-98AF-43BC-B27C-13DF21A9DB5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB67B007-98AF-43BC-B27C-13DF21A9DB5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB67B007-98AF-43BC-B27C-13DF21A9DB5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{422B58C7-F585-413B-BA19-56836882B6DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{422B58C7-F585-413B-BA19-56836882B6DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{422B58C7-F585-413B-BA19-56836882B6DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{422B58C7-F585-413B-BA19-56836882B6DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

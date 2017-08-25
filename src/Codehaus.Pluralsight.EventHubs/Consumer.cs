@@ -15,15 +15,20 @@ namespace Codehaus.Pluralsight.EventHubs
 
         async Task IEventProcessor.CloseAsync(PartitionContext context, CloseReason reason)
         {
-            Console.WriteLine("Processor Shutting Down. Partition '{0}', Reason: '{1}'.", context.Lease.PartitionId,
-                reason);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Releasing lease on Partition {0}. Reason: {1}.", context.Lease.PartitionId, reason);
             if (reason == CloseReason.Shutdown)
+            {
                 await context.CheckpointAsync();
+                Console.WriteLine($"Downloaded {_counter} events");
+            }
+            Console.ReadLine();
         }
 
         Task IEventProcessor.OpenAsync(PartitionContext context)
         {
-            Console.WriteLine("SimpleEventProcessor initialized.  Partition: '{0}', Offset: '{1}'",
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("I am listening to Partition {0}, at position {1}.",
                 context.Lease.PartitionId, context.Lease.Offset);
             _checkpointStopWatch = new Stopwatch();
             _checkpointStopWatch.Start();
@@ -32,6 +37,7 @@ namespace Codehaus.Pluralsight.EventHubs
 
         async Task IEventProcessor.ProcessEventsAsync(PartitionContext context, IEnumerable<EventData> messages)
         {
+            Console.ForegroundColor = ConsoleColor.Green;
             foreach (var eventData in messages)
             {
                 // 1. Convert the stream of bytes to string.
@@ -45,9 +51,7 @@ namespace Codehaus.Pluralsight.EventHubs
                     deviceTelemetry.DeviceType,
                     deviceTelemetry.Time,
                     deviceTelemetry.IsOn ? "On" : "Off");
-                Console.WriteLine($"Downloaded {++_counter} events");
-
-                // Todo: Scale out Consumers.
+                _counter++;
 
                 #endregion
 
