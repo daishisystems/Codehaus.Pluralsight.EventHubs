@@ -47,6 +47,8 @@ namespace Codehaus.Pluralsight.EventHubs
                     deviceTelemetry.IsOn ? "On" : "Off");
                 Console.WriteLine($"Downloaded {++_counter} events");
 
+                // Todo: Scale out Consumers.
+
                 #endregion
 
                 // Console.WriteLine("Message received.  Partition: '{0}', Data: '{1}'", context.Lease.PartitionId, data);
