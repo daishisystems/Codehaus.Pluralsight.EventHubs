@@ -22,7 +22,6 @@ namespace Codehaus.Pluralsight.EventHubs.PublisherApp
                 publisher.Publish(deviceTelemetry);
                 Console.WriteLine($"Published {i + 1} events...");
             }
-
             Console.ReadLine();
         }
     }
