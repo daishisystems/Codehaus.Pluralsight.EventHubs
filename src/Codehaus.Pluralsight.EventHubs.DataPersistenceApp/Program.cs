@@ -8,11 +8,11 @@ namespace Codehaus.Pluralsight.EventHubs.DataPersistenceApp
         private static void Main(string[] args)
         {
             const string eventHubConnectionString =
-                "Endpoint=sb://mooney.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=SATW/1oIIF9dAAPbgF3YLkDjMmGsYMvs/Fi+Vutz8bo=";
-            const string eventHubName = "myeventhub";
-            const string storageAccountName = "mooneyeventhub";
+                "Endpoint=sb://simple-example.servicebus.windows.net/;SharedAccessKeyName=Consumer;SharedAccessKey=3ZzLmCvYRxl7WhL6wHqXCTqkdwMuvVmsmUQCZTUt4/w=";
+            const string eventHubName = "simple-example";
+            const string storageAccountName = "mooney";
             const string storageAccountKey =
-                "f++Lw/zix9ryWhgRRMqyRqr4QP4Np17BT21IbEzyEGH3SK7gT1byIdUPW7iVHau9xF8fTtANtC5c4ky+RUKJCw==";
+                "Kdg1BzIfYPKdU+EWaqfkEIlmmq3uWbKU7t7TclkEVJEOvT8fe/N8LPa/xQyMYRiEong53BYfN6IpygRaASmFLQ==";
             var storageConnectionString =
                 $"DefaultEndpointsProtocol=https;AccountName={storageAccountName};AccountKey={storageAccountKey}";
 
