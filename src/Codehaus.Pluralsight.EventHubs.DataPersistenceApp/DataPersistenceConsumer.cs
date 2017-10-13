@@ -41,22 +41,31 @@ namespace Codehaus.Pluralsight.EventHubs.DataPersistenceApp
                 var deviceTelemetry = JsonConvert.DeserializeObject<DeviceTelemetry>(data);
 
                 const string connectionstring =
-                    "Server=tcp:mooney.database.windows.net,1433;Initial Catalog=mooney;Persist Security Info=False;User ID=mooney;Password=M3c54n1c4L;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+                    "Server=tcp:mooney.database.windows.net,1433;Initial Catalog=mooney;" +
+                    "Persist Security Info=False;User ID=mooney;Password=M3c54n1c4L;" +
+                    "MultipleActiveResultSets=False;Encrypt=True;" +
+                    "TrustServerCertificate=False;Connection Timeout=30;";
 
                 using (var connection = new SqlConnection(connectionstring))
                 {
                     connection.Open();
 
                     const string sqlCommandText =
-                        "insert into DeviceTelemetry(IPAddress,Time,DeviceType,IsOn) values (@IPAddress,@Time,@DeviceType,@IsOn);";
+                        "insert into DeviceTelemetry(IPAddress,Time,DeviceType,IsOn) " +
+                        "values (@IPAddress,@Time,@DeviceType,@IsOn);";
                     using (var command = new SqlCommand(sqlCommandText, connection))
                     {
-                        command.Parameters.AddWithValue("@IPAddress", deviceTelemetry.IpAddress);
-                        command.Parameters.AddWithValue("@Time", deviceTelemetry.Time);
-                        command.Parameters.AddWithValue("@DeviceType", deviceTelemetry.DeviceType);
-                        command.Parameters.AddWithValue("@IsOn", deviceTelemetry.IsOn);
+                        command.Parameters
+                            .AddWithValue("@IPAddress", deviceTelemetry.IpAddress);
+                        command.Parameters
+                            .AddWithValue("@Time", deviceTelemetry.Time);
+                        command.Parameters
+                            .AddWithValue("@DeviceType", deviceTelemetry.DeviceType);
+                        command.Parameters
+                            .AddWithValue("@IsOn", deviceTelemetry.IsOn);
 
-                        Console.WriteLine($"Added Device IP {deviceTelemetry.IpAddress} to the database.");
+                        Console.WriteLine($"Added Device IP {deviceTelemetry.IpAddress} " +
+                                          $"to the database.");
                         command.ExecuteNonQuery();
                     }
                 }
